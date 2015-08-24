@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+</head>
+
+<body ng-app="app">
+    <div class="container" ng-controller="PostsCtrl">
+        <hl>Recent Posts</hl>
+        <form role="form">
+            <div class="form-group">
+                <div class="input-group">
+                    <input ng-model="postBody" class="form-control" />
+                    <span class="input-group-btn">
+                        <button ng-click="addPost()" class="btn btn-default">Add Post</button>
+                    </span>
+                </div>
+            </div>
+        </form>
+        <ul class="list-group">
+            <li ng-repeat="post in posts" class="list-group-item">
+                <strong>@{{ post.username }}</strong>
+                <span>{{ post.body}}</span>
+            </li>
+        </ul>
+    </div>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js'></script>
+    <script>
+        var app = angular.module("app", []);
+        app.controller("PostsCtrl", function($scope) {
+            $scope.addPost = function() {
+                if($scope.postBody) {
+                   $scope.posts.unshift({
+                       username : "jun.qin",
+                       body : $scope.postBody
+                   });
+                }
+                $scope.postBody = null;
+            };
+            $scope.posts = [
+                {
+                    username : "jun.qin",
+                    body : "Node rules!"
+                },
+                {
+                    username : "Jeff Dickey",
+                    body : "hello world"
+                }
+            ];
+        })
+    </script>
+</body>
+
+</html>
