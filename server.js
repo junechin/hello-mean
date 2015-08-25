@@ -23,6 +23,12 @@ app.post('/api/posts', function (req, res) {
     });
 });
 
+app.get('/', function (req, res) {
+  res.sendfile('layouts/posts.html')
+});
+
+app.use("/node_modules", express.static('node_modules'));
+
 app.listen(3000, function () {
     console.log('Server listening on ', 3000);
 });
