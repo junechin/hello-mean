@@ -1,5 +1,6 @@
 {
   "name": "hello-mean",
+  "main" : "server.js",
   "dependencies": {
     "angular": "^1.4.4",
     "body-parser": "^1.13.3",
